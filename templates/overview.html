@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Body and Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            background-color: #ffffff;
+            color: rgb(24, 20, 20);
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 97%;
+            z-index: 1000;
+        }
+
+        .navbar .brand {
+            font-size: 36px;
+            font-weight: bold;
+            color: rgb(15, 13, 13);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .brand i {
+            margin-right: 30px;
+            font-size: 24px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 50px;
+        }
+
+        .navbar .nav-links a {
+            color: rgb(25, 23, 23);
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 15px;
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 500;
+            border-radius: 5px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #525250;
+        }
+
+        .navbar .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0; /* Position the underline at the bottom of the link */
+            left: 0;
+            width: 0; /* Start with no width */
+            height: 2px;
+            background: #000000;
+            transition: width 0.4s ease;
+        }
+
+        .navbar .nav-links a:hover::before {
+            width: 100%; /* Expand to the full width of the text */
+        }
+
+        /* Space between Navigation and About Us Section */
+        .space {
+            margin-top: 120px; /* Adds space between navbar and about section */
+        }
+        .intro-section {
+            margin-top: 150px; /* You can adjust this value for more space */
+        }
+        .intro-text {
+            max-width: 90%;
+            width: 100%;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 18px;
+            color: #444;
+            text-align: justify;
+        }
+        
+        .intro-section h2 {
+            font-size: 56px !important; /* Larger font size for headings */
+            font-weight: 700; /* Bold text */
+            color: #131516; /* Darker color for contrast */
+            margin-bottom: 10px; /* Space between the heading and text */
+            line-height: 1.4; /* Improved line height for readability */
+            text-align: center; /* Center-align the heading */
+            font-family: 'Roboto', sans-serif; /* Modern sans-serif font */
+        }
+
+        /* Paragraph text styling for better readability */
+        .intro-text {
+            max-width: 90%; /* Limit the width to avoid excessive line lengths */
+            width: 100%; /* Full width for the paragraph container */
+            margin: 0 auto; /* Center-align the text */
+            line-height: 1.8; /* Space between lines for better legibility */
+            font-size: 24px!important; /* Default font size */
+            color: #2c2a2a; /* Soft dark color for text */
+            text-align: justify; /* Justify the text for a clean look */
+            font-family: 'Open Sans', sans-serif; /* Simple, readable font */
+            padding: 10px 0; /* Add vertical padding for spacing */
+        }
+        
+        /* Container for general layout of image and text */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            margin: 20px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .container .text {
+            width: 45%;
+        }
+
+        .container img {
+            width: 45%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .reversed .container {
+            flex-direction: row-reverse;
+        }
+
+        /* Additional Section Styling */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        /* Style for headings (h2) */
+        .section .container .text h2 {
+            font-size: 38px; /* Larger font size for the heading */
+            font-weight: 700; /* Bold font for the heading */
+            color: #2c3e50; /* Darker color for the heading */
+            margin-bottom: 15px; /* Space below the heading */
+            text-align: left; /* Align text to the left */
+            font-family: 'Roboto', sans-serif; /* Font family */
+        }
+
+        /* Style for paragraphs (p) */
+        .section .container .text p {
+            font-size: 22px; /* Set the font size for paragraphs */
+            line-height: 1.7; /* Adjust line height for readability */
+            color: #0d0d0d; /* Slightly lighter color for the text */
+            text-align: left; /* Left-align the paragraph text */
+            font-family: 'Arial', sans-serif; /* Font family for paragraphs */
+            margin-bottom: 20px; /* Space below the paragraph */
+            width: 100%; /* Make the paragraph take up the full width */
+            word-wrap: break-word; /* Allow words to break onto the next line if necessary */
+            word-break: break-word; /* Break words if they overflow */
+        }
+
+        /* Animation styles */
+        .fade-left {
+            animation: fadeInLeft 2.5s ease-out forwards;
+        }
+
+        .fade-right {
+            animation: fadeInRight 2.5s ease-out forwards;
+        }
+
+        .fade-up {
+            animation: fadeInUp 2.5s ease-out forwards;
+        }
+
+        .fade-down {
+            animation: fadeInDown 2.5s ease-out forwards;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#" class="brand">
+            <i class="fas fa-lock"></i> Encrypt/Decrypt
+        </a>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('register') }}">Register</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </div>
+    </div>
+
+    <!-- Full-width Introduction Section -->
+    <div class="section intro-section space fade-up">
+        <div class="text">
+            <h2>Introduction</h2>
+            <p class="intro-text">
+                This application allows users to securely upload, encrypt, and decrypt images using AES encryption. 
+                The AES algorithm ensures the confidentiality of images by transforming them into unreadable data, 
+                which can only be decrypted using the correct secret key. The process starts with the user uploading an image file, 
+                which is then encrypted using a user-provided key. Once encrypted, the image can be stored securely, and the user can retrieve it 
+                later by providing the same key for decryption. This method ensures that only authorized users can access and view the images. 
+                The application also uses Flask as the web framework to handle HTTP requests and provide a simple and user-friendly interface. 
+                The use of base64 encoding helps transmit binary data safely over the web. Overall, the app aims to provide a secure and efficient 
+                solution for image encryption and storage. This solution protects not only the images themselves but also the privacy of the users who 
+                upload and store their data. With the growing concerns over cybersecurity, especially in the digital age, protecting sensitive information 
+                is crucial. The app's intuitive design ensures that both beginners and experienced users can easily navigate the encryption process. 
+                Moreover, the application provides robust encryption methods to withstand potential threats, including unauthorized access and data theft. 
+                The platform also offers a flexible environment that allows for seamless integration with various storage and cloud services, 
+                making it a versatile solution for both personal and professional use. As security protocols evolve, the app is continually updated 
+                to implement the latest advancements in cryptography, ensuring that users can rely on it for secure image storage and sharing.
+            </p>
+        </div>
+    </div>
+
+    <!-- Sections with image on left and text on right -->
+    <div class="section fade-left">
+        <div class="container">
+            <img src="static/img/k1.png" alt="Image 2">
+            <div class="text">
+                <h2>Technologies Used</h2>
+                <p>
+                    This app uses a combination of several powerful technologies to ensure a secure, efficient, and user-friendly experience for image encryption and decryption. At its core, the app uses Flask, a lightweight and flexible web framework that enables easy development of web applications. Additionally, the app leverages the power of Pandas, a data manipulation library, to handle and process any data that might need to be stored or analyzed. To provide strong encryption for images, the app uses AES (Advanced Encryption Standard), a symmetric encryption algorithm that is widely regarded as one of the most secure methods for protecting data. The Pillow library is used to handle image manipulation, ensuring that the app can work with various image formats easily. To further enhance security, the app uses Base64 encoding to transmit binary image data safely over HTTP, ensuring that the encrypted data can be transferred without any corruption. Finally, Bootstrap is used to style the web interface, making it responsive and user-friendly across all devices and screen sizes. All of these technologies work together seamlessly to create an intuitive and secure application that allows users to encrypt and decrypt their images with ease and confidence.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section reversed fade-right">
+        <div class="container">
+            <img src="static/img/k2.png" alt="Image 3">
+            <div class="text">
+                <h2>Security and Privacy</h2>
+                <p>The AES encryption ensures that your images remain confidential by transforming them into unreadable data. This data can only be decrypted with the correct secret key, providing a strong layer of protection. Additionally, the base64-encoded Initialization Vector (IV) is used to securely transmit data over HTTP, ensuring that the encryption process remains secure even during transmission. This combination of AES encryption and base64 encoding protects not only the image data but also the security of the encryption key, ensuring that only authorized users with the correct key can access and decrypt the images. The application employs best practices in security to provide users with peace of mind when storing and sharing sensitive information.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section fade-up">
+        <div class="container">
+            <img src="static/img/k3.png" alt="Image 4">
+            <div class="text">
+                <h2>Use Cases</h2>
+                <p>This application is perfect for securely storing and sharing personal or confidential images. Whether you're protecting private family photos, medical records, or sensitive business documents, this app ensures your images remain safe. Only authorized users with the correct encryption key can decrypt and access the images, providing an additional layer of security. It can be used by professionals who handle sensitive information, such as legal documents or private financial data, as well as by individuals who want to ensure their personal media remains protected from unauthorized access. The app is also suitable for use in environments where confidentiality is critical, such as healthcare, legal, and financial sectors, where image encryption is necessary to prevent data breaches and maintain privacy. The combination of AES encryption and base64 encoding guarantees that the images remain secure both at rest and in transit, making it an ideal solution for anyone seeking secure image storage and sharing options.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

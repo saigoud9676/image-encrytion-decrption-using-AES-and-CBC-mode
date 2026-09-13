@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, rgb(255, 255, 255), rgb(47, 45, 45)), url('https://via.placeholder.com/1600x900') center center no-repeat;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            font-size: 18px;
+        }
+
+        .navbar .brand {
+            font-size: 36px;
+            font-weight: bold;
+            color: #090909;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .nav-links a {
+            color: #060606;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .navbar .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scaleX(0);
+            width: 100%;
+            height: 2px;
+            background: #f6f6f4;
+            transition: all 0.4s ease;
+        }
+
+        .navbar .nav-links a:hover::before {
+            transform: translate(-50%, -50%) scaleX(1);
+        }
+
+        /* Register Form Container */
+        .register-container {
+            background: rgb(230, 227, 227);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 480px;
+            transform: translateY(-100px);
+            opacity: 0;
+            animation: fadeInUp 0.9s forwards;
+        }
+
+        /* Keyframe Animation for Form Appearance */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .register-container h1 {
+            text-align: center;
+            font-size: 41px;
+            color: #0e0d0d;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .register-container label {
+            font-size: 18px;
+            color: #151515;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .register-container input {
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border-radius: 50px;
+            border: 2px solid #221b1b;
+            background: transparent;
+            color: #fff;
+            outline: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgb(17, 17, 17);
+        }
+
+        .register-container input:focus {
+            border-color: #020202;
+            box-shadow: 0 0 20px rgb(252, 252, 251);
+        }
+
+        .register-container button {
+            padding: 15px;
+            font-size: 18px;
+            width: 100%;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #515254, #454443);
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .register-container button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #f8f7f6, #a5a7ab);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .register-container p {
+            text-align: center;
+            color: #fff;
+            margin-top: 30px;
+        }
+
+        .register-container p a {
+            color: #807f7c;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.4s ease;
+        }
+
+        .register-container p a:hover {
+            color: #1b1a19;
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .register-container {
+                padding: 30px;
+                margin: 20px;
+            }
+
+            .navbar .brand {
+                font-size: 28px;
+            }
+
+            .navbar .nav-links a {
+                font-size: 16px;
+                margin-left: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#" class="brand">
+            <i class="fas fa-lock"></i> Encrypt/Decrypt
+        </a>
+        
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('register') }}">Register</a>
+           
+        </div>
+    </div>
+
+    <!-- Register Form Container -->
+    <div class="register-container">
+        <h1>Register</h1>
+        <form method="POST">
+            <label for="username">Username</label>
+            <input type="text" name="username" required><br>
+            <label for="password">Password</label>
+            <input type="password" name="password" required><br>
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" name="confirm_password" required><br>
+            <button type="submit">Register</button>
+        </form>
+        <p><a href="{{ url_for('login') }}">Already have an account? Login here.</a></p>
+    </div>
+
+</body>
+</html>
